@@ -56,7 +56,7 @@ def table_extraction(url, username, password, path):
         except:
             print(f"error in the SQL")
     df = pd.DataFrame({'file': file_list, 'original sql': org_sql_list, 'sql':sql_list, 'tables': table_list})
-    return df
+    return df, table_dict
 
 def _check_db_connection(conn_string):
     try:
