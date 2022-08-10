@@ -43,7 +43,7 @@ def table_extraction(url, username, password, path):
                 sql = sql.replace("mimiciii_clinical.mimiciii_clinical." + i, "mimiciii_clinical." + i)
         sql = sql.lower()
         # special treatment ends here
-        print(sql)
+        #print(sql)
         try:
             extracted_tables = gateway.get_table(java_conn, username, password, sql)
             file_list.append(os.path.basename(f))
@@ -185,7 +185,7 @@ def _preprocess_str(str1):
         if date_idx in toret.keys():
             s = str1[date_idx-12:toret[date_idx]+1]
             temp = s.split(',')
-            print(temp)
+            #print(temp)
             sub = "TIMESTAMPADD(" + temp[-1][:-1].split(" ")[-1] + "," + re.split(r"(.*)(?=\s)", s)[1].split('INTERVAL')[-1] + "," + re.split(r"(\()(.*)", re.split(r"(.*)(?=\,)", s)[1])[-2] + ")"
             str1 = str1[:date_idx-12] + sub + str1[toret[date_idx]+1:]
             toret = _find_parens(str1)
